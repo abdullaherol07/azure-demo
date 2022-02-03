@@ -1,7 +1,7 @@
 resource "azurerm_linux_virtual_machine_scale_set" "example" {
   name                = "example-vmss"
   resource_group_name = azurerm_resource_group.demo.name
-  location            = azurerm_resource_group.Westeurope.location
+  location            = azurerm_resource_group.WestEurope.location
   sku                 = "Standard_F2"
   instances           = 1
   admin_username      = "adminuser"
