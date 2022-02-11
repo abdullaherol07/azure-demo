@@ -41,6 +41,7 @@ resource "azurerm_mssql_virtual_network_rule" "example" {
   name      = "sql-vnet-rule"
   server_id = azurerm_mysql_server.wordpress.id
   subnet_id = azurerm_subnet.wordpress.id
+} 
 
 data "azurerm_mysql_server" "wordpress" {
   name                = azurerm_mysql_server.wordpress.name
