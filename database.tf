@@ -18,6 +18,13 @@ resource "azurerm_mysql_server" "wordpress" {
   public_network_access_enabled     = true
   ssl_enforcement_enabled           = false
   #ssl_minimal_tls_version_enforced = "TLS1_2"
+
+resource "azurerm_mysql_virtual_network_rule" "example" {
+  name                = "mysql-vnet-rule"
+  resource_group_name = azurerm_resource_group.wordpress.name
+  server_name         = azurerm_mysql_server.mysqlserver.name
+  subnet_id           = azurerm_subnet.wordpress.id
+}
 }
 
 # Create MySql DataBase
@@ -37,11 +44,6 @@ resource "azurerm_mysql_firewall_rule" "wordpress" {
   start_ip_address    = azurerm_public_ip.wordpress.ip_address
   end_ip_address      = azurerm_public_ip.wordpress.ip_address
 }
-resource "azurerm_mssql_virtual_network_rule" "example" {
-  name      = "sql-vnet-rule"
-  server_id = azurerm_mysql_server.wordpress.id
-  subnet_id = azurerm_subnet.wordpress.id
-} 
 
 data "azurerm_mysql_server" "wordpress" {
   name                = azurerm_mysql_server.wordpress.name
