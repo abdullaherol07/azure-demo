@@ -25,7 +25,6 @@ resource "azurerm_mysql_virtual_network_rule" "example" {
   server_name         = azurerm_mysql_server.mysqlserver.name
   subnet_id           = azurerm_subnet.wordpress.id
 }
-}
 
 # Create MySql DataBase
 resource "azurerm_mysql_database" "wordpress" {
