@@ -23,7 +23,7 @@ resource "azurerm_mysql_server" "wordpress" {
 resource "azurerm_mysql_virtual_network_rule" "example" {
   name                = "mysql-vnet-rule"
   resource_group_name = azurerm_resource_group.wordpress.name
-  server_name         = azurerm_mysql_server.mysqlserver.name
+  server_name         = azurerm_mysql_server.wordpress.name
   subnet_id           = azurerm_subnet.wordpress.id
 }
 
